@@ -1,0 +1,39 @@
+
+RUN_STEPS (copy-paste)
+
+# Prereqs: Node.js >=16, npm, (optional) Docker & docker-compose
+
+1. Unzip or clone and open terminal:
+   cd ludo-realm-pkr
+
+2. Copy env:
+   cp .env.example .env
+   # Edit .env if you want to change defaults (MONGO_URI, JWT_SECRET, PLATFORM_FEE_PERCENT, etc.)
+
+3. Start local MongoDB (either via Docker or your own):
+   # Option A: Docker (recommended)
+   docker-compose up -d
+   # Option B: Use your own MongoDB and set MONGO_URI in .env
+
+4. Install dependencies & seed database:
+   # Backend
+   cd backend
+   npm install
+   npm run seed
+
+   # Frontend (open new terminal)
+   cd ../frontend
+   npm install
+
+5. Run both in dev mode (two terminals) or use root convenience script:
+   # Terminal 1 - backend
+   cd backend
+   npm run dev
+
+   # Terminal 2 - frontend
+   cd frontend
+   npm run dev
+
+6. Open http://localhost:3000 in your browser. Use demo accounts created by seed script.
+   Demo users: demo1..demo4 (email demo{n}@example.com, password demoPass123)
+
